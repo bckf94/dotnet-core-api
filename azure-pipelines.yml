@@ -1,0 +1,15 @@
+trigger:
+ - master
+
+variables:
+  azureSubscription: $(azureSubscription)
+  appName: $(appName)
+  vmImageName: 'windows-latest'
+
+- task: AzureWebApp@1
+  displayname: 'Azure WebApp Deploy'
+  inputs: 
+    azureSubscription: $(azureSubscription)
+    appName: $(appName)
+    package: $(System.ArtifactsDirectory)/**/*.zip
+
